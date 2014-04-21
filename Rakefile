@@ -17,6 +17,11 @@ namespace :docker do
 	task :push => :login do
 		run_command "docker push #{DOCKER_TAG} ."
 	end
+
+	desc "write tag to file"
+	task :write_tag do
+		run_command "echo #{DOCKER_TAG} > sample.app_tag.txt"
+	end
 end
 
 def run_command command
