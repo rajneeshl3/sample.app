@@ -5,7 +5,9 @@ task :default
 namespace :docker do
 	desc "build the docker image"
 	task :build do
+		write_version_number
 		run_command "docker build -t #{DOCKER_TAG} ."
+		puts "created docker tag, #{DOCKER_TAG}"
 	end
 
 	desc "login to the docker registry"
@@ -29,3 +31,14 @@ def run_command command
 	system command
 end
 
+def write_version_number
+	File.open("version.json", "w") do |io|
+		io.puts <<EOF
+{
+	"tags": {
+		"version": "#{BUILD_NUMBER}"
+	}
+}
+EOF
+	end
+end

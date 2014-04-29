@@ -1,0 +1,10 @@
+{
+	"tags":{
+		"name":                    "sample",
+		"schema":                  "1",
+
+		"service.sample.port.int": "9615",
+		"service.sample.uri":      "/sample",
+		"service.sample.router":   "external"
+	}
+}
